@@ -56,6 +56,10 @@ class FluentHandler extends AbstractProcessingHandler
     {
         $parameters = parse_url($fluentUri);
 
+        if (!$parameters) {
+            throw new \InvalidArgumentException('Unsupported uri.'); // @codeCoverageIgnore
+        }
+
         if (!isset($parameters['scheme'])) {
             $parameters['scheme'] = 'fluent';
         }

@@ -13,10 +13,14 @@ class FluentHandlerTest extends \PHPUnit_Framework_TestCase
      */
     public function testParseUri($uri, $instanceOf, $host, $port)
     {
-        $logger = $this->getProperty(new FluentHandler($uri), 'logger');
-        $this->assertInstanceOf($instanceOf, $logger);
-        $this->assertAttributeEquals($host, 'host', $logger);
-        $this->assertAttributeEquals($port, 'port', $logger);
+        try {
+            $logger = $this->getProperty(new FluentHandler($uri), 'logger');
+            $this->assertInstanceOf($instanceOf, $logger);
+            $this->assertAttributeEquals($host, 'host', $logger);
+            $this->assertAttributeEquals($port, 'port', $logger);
+        } catch (\InvalidArgumentException $e) {
+            $this->markTestSkipped('Bug #66813 Detect some valid url as invalid in parse_url. (fixed in 5.5.24 and 5.6.8)');
+        }
     }
 
     /**
@@ -51,7 +55,7 @@ class FluentHandlerTest extends \PHPUnit_Framework_TestCase
         return [
             ['http://192.0.2.1:1234/', 'Fluent\\Logger\\HttpLogger', '192.0.2.1', 1234],
             ['tcp://192.0.2.2:3456/', 'Fluent\\Logger\\FluentLogger', '192.0.2.2', 3456],
-            ['//192.0.2.3:946/?socket_timeout=5', 'Fluent\\Logger\\FluentLogger', '192.0.2.3', 946],
+            ['//192.0.2.3:946?socket_timeout=5', 'Fluent\\Logger\\FluentLogger', '192.0.2.3', 946],
         ];
     }
 
