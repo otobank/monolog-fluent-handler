@@ -49,6 +49,9 @@ class FluentHandler extends AbstractProcessingHandler
         ]));
     }
 
+    /**
+     * @param string $fluentUri
+     */
     protected function parseUri($fluentUri)
     {
         $parameters = parse_url($fluentUri);
@@ -57,7 +60,7 @@ class FluentHandler extends AbstractProcessingHandler
             $parameters['scheme'] = 'fluent';
         }
 
-        switch(strtolower($parameters['scheme'])) {
+        switch (strtolower($parameters['scheme'])) {
             case 'http':
                 $host = isset($parameters['host']) ? $parameters['host'] : '127.0.0.1';
                 $port = isset($parameters['port']) ? $parameters['port'] : HttpLogger::DEFAULT_HTTP_PORT;
@@ -68,11 +71,10 @@ class FluentHandler extends AbstractProcessingHandler
             case 'fluent':
                 $host = isset($parameters['host']) ? $parameters['host'] : FluentLogger::DEFAULT_ADDRESS;
                 $port = isset($parameters['port']) ? $parameters['port'] : FluentLogger::DEFAULT_LISTEN_PORT;
-                $options = [];
                 if (isset($parameters['query'])) {
                     parse_str($parameters['query'], $options);
                 }
-                $this->logger = new FluentLogger($host, $port, $options);
+                $this->logger = new FluentLogger($host, $port, isset($options) ? $options : []);
                 break;
 
             default:
