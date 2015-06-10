@@ -19,6 +19,25 @@ $logger->pushHandler(new FluentHandler());
 $logger->alert('Something wrong.');
 ```
 
+### Symfony
+
+example) **`app/config/config.yml`**
+
+```yaml
+services:
+    acme.monolog.fluent_handler:
+        class: Otobank\Monolog\Handler\FluentHandler
+        arguments:
+            - "%acme.fluent.uri%"
+
+monolog:
+    handlers:
+        fluent:
+            type: service
+            id: acme.monolog.fluent_handler
+            level: debug
+```
+
 
 Installation
 ------------
