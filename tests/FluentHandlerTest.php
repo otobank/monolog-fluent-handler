@@ -2,6 +2,7 @@
 
 namespace Otobank\Monolog\Handler\Tests;
 
+use Fluent\Logger\FluentLogger;
 use Monolog\Logger;
 use Otobank\Monolog\Handler\FluentHandler;
 use ReflectionClass;
@@ -56,6 +57,7 @@ class FluentHandlerTest extends \PHPUnit_Framework_TestCase
             ['http://192.0.2.1:1234/', 'Fluent\\Logger\\HttpLogger', '192.0.2.1', 1234],
             ['tcp://192.0.2.2:3456/', 'Fluent\\Logger\\FluentLogger', '192.0.2.2', 3456],
             ['//192.0.2.3:946?socket_timeout=5', 'Fluent\\Logger\\FluentLogger', '192.0.2.3', 946],
+            [null, 'Fluent\\Logger\\FluentLogger', FluentLogger::DEFAULT_ADDRESS, FluentLogger::DEFAULT_LISTEN_PORT],
         ];
     }
 
