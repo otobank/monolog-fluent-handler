@@ -1,4 +1,4 @@
-Monolog Fluent Handler
+Monolog Fluent Handler [![Build Status](https://travis-ci.org/otobank/monolog-fluent-handler.svg?branch=master)](https://travis-ci.org/otobank/monolog-fluent-handler)
 ======================
 
 Monolog handler for Fluent.
