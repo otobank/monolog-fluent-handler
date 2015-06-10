@@ -25,9 +25,14 @@ class FluentHandler extends AbstractProcessingHandler
      * @param int $level
      * @param bool $bubble
      */
-    public function __construct($fluentUri, $level = Logger::DEBUG, $bubble = true)
+    public function __construct($fluentUri = null, $level = Logger::DEBUG, $bubble = true)
     {
         parent::__construct($level, $bubble);
+
+        if (is_null($fluentUri)) {
+            $fluentUri = sprintf('fluent://%s:%d',
+                FluentLogger::DEFAULT_ADDRESS, FluentLogger::DEFAULT_LISTEN_PORT);
+        }
 
         if ($fluentUri instanceof LoggerInterface) {
             $this->logger = $fluentUri;
