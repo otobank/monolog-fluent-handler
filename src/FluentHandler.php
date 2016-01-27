@@ -14,7 +14,7 @@ use Monolog\Logger;
 class FluentHandler extends AbstractProcessingHandler
 {
     /**
-     * @var LoggerInterface $logger
+     * @var LoggerInterface
      */
     protected $logger;
 
@@ -22,8 +22,8 @@ class FluentHandler extends AbstractProcessingHandler
      * Constructor.
      *
      * @param string|LoggerInterface $fluentUri
-     * @param int $level
-     * @param bool $bubble
+     * @param int                    $level
+     * @param bool                   $bubble
      */
     public function __construct($fluentUri = null, $level = Logger::DEBUG, $bubble = true)
     {
@@ -42,14 +42,14 @@ class FluentHandler extends AbstractProcessingHandler
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function write(array $record)
     {
         $tag = $record['channel'];
 
         $this->logger->post($tag, array_merge($record['context'], [
-            'level' => Logger::getLevelName($record['level']),
+            'level'   => Logger::getLevelName($record['level']),
             'message' => $record['message'],
         ]));
     }
