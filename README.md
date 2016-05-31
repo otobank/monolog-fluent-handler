@@ -1,5 +1,7 @@
-Monolog Fluent Handler [![Build Status](https://travis-ci.org/otobank/monolog-fluent-handler.svg?branch=master)](https://travis-ci.org/otobank/monolog-fluent-handler) [![Coverage Status](https://coveralls.io/repos/otobank/monolog-fluent-handler/badge.svg?branch=master)](https://coveralls.io/r/otobank/monolog-fluent-handler?branch=master)
+Monolog Fluent Handler
 ======================
+
+[![Latest Stable Version](https://poser.pugx.org/otobank/monolog-fluent-handler/v/stable)](https://packagist.org/packages/otobank/monolog-fluent-handler) [![Total Downloads](https://poser.pugx.org/otobank/monolog-fluent-handler/downloads)](https://packagist.org/packages/otobank/monolog-fluent-handler) [![Latest Unstable Version](https://poser.pugx.org/otobank/monolog-fluent-handler/v/unstable)](https://packagist.org/packages/otobank/monolog-fluent-handler) [![License](https://poser.pugx.org/otobank/monolog-fluent-handler/license)](https://packagist.org/packages/otobank/monolog-fluent-handler) [![Build Status](https://travis-ci.org/otobank/monolog-fluent-handler.svg?branch=master)](https://travis-ci.org/otobank/monolog-fluent-handler) [![Coverage Status](https://coveralls.io/repos/otobank/monolog-fluent-handler/badge.svg?branch=master)](https://coveralls.io/r/otobank/monolog-fluent-handler?branch=master)
 
 Monolog handler for Fluent.
 
