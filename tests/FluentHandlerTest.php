@@ -44,8 +44,7 @@ class FluentHandlerTest extends \PHPUnit_Framework_TestCase
         $logger
             ->expects($this->once())
             ->method('post')
-            ->with($tag, $data)
-        ;
+            ->with($tag, $data);
 
         $handler = new FluentHandler($logger);
         $handler->write($record);
@@ -66,17 +65,17 @@ class FluentHandlerTest extends \PHPUnit_Framework_TestCase
         return [
             [
                 [
-                    'channel' => 'unittest',
-                    'message' => 'This is it.',
-                    'context' => [],
+                    'channel'   => 'unittest',
+                    'message'   => 'This is it.',
+                    'context'   => [],
                     'formatted' => 'This is formatted.',
-                    'level' => Logger::DEBUG,
+                    'level'     => Logger::DEBUG,
                 ],
                 'unittest',
                 [
                     'message' => 'This is it.',
-                    'level' => Logger::getLevelName(Logger::DEBUG),
-                ]
+                    'level'   => Logger::getLevelName(Logger::DEBUG),
+                ],
             ],
             [
                 [
@@ -86,14 +85,14 @@ class FluentHandlerTest extends \PHPUnit_Framework_TestCase
                         'Here' => 'Comes the sun.',
                     ],
                     'formatted' => 'This is formatted.',
-                    'level' => Logger::DEBUG,
+                    'level'     => Logger::DEBUG,
                 ],
                 'unittest',
                 [
-                    'Here' => 'Comes the sun.',
+                    'Here'    => 'Comes the sun.',
                     'message' => 'This is it.',
-                    'level' => Logger::getLevelName(Logger::DEBUG),
-                ]
+                    'level'   => Logger::getLevelName(Logger::DEBUG),
+                ],
             ],
         ];
     }
